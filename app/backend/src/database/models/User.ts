@@ -2,6 +2,7 @@ import { Model, INTEGER, STRING } from 'sequelize';
 import db from '.';
 
 class Users extends Model {
+  // deve ser public - ter campo - e tipo
   public id!: number;
   public username!: string;
   public role!: string;
