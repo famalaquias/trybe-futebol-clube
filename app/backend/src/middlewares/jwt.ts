@@ -22,8 +22,8 @@ const generateTokenJwt = (email: string) => {
 // verificando o token.
 const verifyJwt = (token: string) => {
   try {
-    const decoded = jwt.verify(token, JWT_SECRET) as jwt.JwtPayload;
-    return decoded;
+    const { email } = jwt.verify(token, JWT_SECRET) as jwt.JwtPayload;
+    return email;
   } catch (error) {
     return error;
   }

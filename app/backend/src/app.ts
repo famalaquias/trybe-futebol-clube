@@ -1,9 +1,9 @@
 import * as express from 'express';
 import middlewareError from './middlewares/middlewareError';
-import UserController from './controllers/LoginControllers';
+import LoginController from './controllers/LoginControllers';
 import loginValidation from './middlewares/loginValidation';
 
-const userControllers = new UserController();
+const loginControllers = new LoginController();
 
 class App {
   public app: express.Express;
@@ -15,8 +15,10 @@ class App {
 
     // Não remover essa rota
     this.app.get('/', (req, res) => res.json({ ok: true }));
-    this.app.post('/login', loginValidation, userControllers.login); // outra maneira de fazer: // this.app.post('/login', loginValidation, (req, res, next) => userControllers.login(req, res, next));
-    // this.app.get('/login/validate', userControllers.validateUser);
+    this.app.post('/login', loginValidation, (req, res, next) =>
+      loginControllers.login(req, res, next));
+    // this.app.post('/login', loginValidation, loginControllers.login);
+    this.app.get('/login/validate', loginControllers.validateUser);
   }
 
   private config():void {
