@@ -20,6 +20,16 @@ class LoginController {
     }
     return res.status(result.code).json({ message: result.message });
   }
+
+  // public async validateUser(
+  //   req: Request,
+  //   res: Response,
+  //   _next: NextFunction,
+  // ) {
+  //   const { authorization } = req.headers;
+
+
+  // }
 }
 
 export default LoginController;
