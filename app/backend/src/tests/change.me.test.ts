@@ -12,12 +12,12 @@ chai.use(chaiHttp);
 
 const { expect } = chai;
 
-const userMock = {
-  username: "Admin",
-  role: "admin",
-  email: "admin@admin.com",
-  password: "secret_admin",
-}
+// const userMock = {
+//   username: "Admin",
+//   role: "admin",
+//   email: "admin@admin.com",
+//   password: "secret_admin",
+// }
 
 describe('Seu teste', () => {
   /**
@@ -49,22 +49,22 @@ describe('Seu teste', () => {
   // Teste rota POST /login..
   it('Teste a rota POST /login com sucesso', async () => {
     const result = await chai.request(app).post('/login').send({
-      userMock
-      // email: 'admin@admin.com',
-      // password: 'secret_admin',
+      // userMock
+      email: 'admin@admin.com',
+      password: 'secret_admin',
     });
 
-    expect(result.status).to.equal(400);
+    expect(result.status).to.equal(200);
   });
 
   it('Teste a rota POST /login com falha', async () => {
     const result = await chai.request(app).post('/login').send({
-      userMock
-      // email: 'teste@teste.com',
-      // password: '123123',
+      // userMock
+      email: 'teste@teste.com',
+      password: '123123',
     });
 
-    expect(result.status).to.equal(400);
+    expect(result.status).to.equal(401);
     expect(result.body).to.have.key('message');
   });
 
