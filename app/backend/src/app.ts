@@ -2,8 +2,10 @@ import * as express from 'express';
 import middlewareError from './middlewares/middlewareError';
 import LoginController from './controllers/LoginControllers';
 import loginValidation from './middlewares/loginValidation';
+import TeamController from './controllers/TeamControllers';
 
 const loginControllers = new LoginController();
+const teamControllers = new TeamController();
 
 class App {
   public app: express.Express;
@@ -15,10 +17,14 @@ class App {
 
     // Não remover essa rota
     this.app.get('/', (req, res) => res.json({ ok: true }));
+
+    // Rotas /login:
     this.app.post('/login', loginValidation, (req, res, next) =>
-      loginControllers.login(req, res, next));
-    // this.app.post('/login', loginValidation, loginControllers.login);
+      loginControllers.login(req, res, next)); // outra maneira de fazer: this.app.post('/login', loginValidation, loginControllers.login);
     this.app.get('/login/validate', loginControllers.validateUser);
+
+    // Rotas /teams:
+    this.app.get('/teams', teamControllers.findAll);
   }
 
   private config():void {
