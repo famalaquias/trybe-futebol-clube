@@ -25,6 +25,7 @@ class App {
 
     // Rotas /teams:
     this.app.get('/teams', teamControllers.findAll);
+    this.app.get('/teams/:id', teamControllers.findOne);
   }
 
   private config():void {

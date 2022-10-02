@@ -4,6 +4,7 @@ import * as chai from 'chai';
 import chaiHttp = require('chai-http');
 
 import { app } from '../app';
+import Team from '../database/models/Team';
 import Example from '../database/models/ExampleModel';
 
 import { Response } from 'superagent';
@@ -12,13 +13,11 @@ chai.use(chaiHttp);
 
 const { expect } = chai;
 
-// const userMock = {
-//   username: "Admin",
-//   role: "admin",
-//   email: "admin@admin.com",
-//   password: "secret_admin",
-// }
-
+const userMock = [{
+  "id": 1,
+  "teamName": "Avaí/Kindermann"
+}]
+   
 describe('Seu teste', () => {
   /**
    * Exemplo do uso de stubs com tipos
@@ -111,4 +110,28 @@ describe('Seu teste', () => {
   // it('Seu sub-teste', () => {
   //   expect(false).to.be.eq(true);
   // });
+});
+
+describe('Teste a rota GET /teams', () => {
+  beforeEach(() => {
+    sinon
+      .stub(Team, 'findAll')
+      .resolves(userMock as Team[]);
+  });
+
+  afterEach(() => {
+    (Team.findAll as sinon.SinonStub).restore();
+    // sinon.restore();
+  });
+
+  //Teste findAll..
+  it('Teste a listagem de todos os times', async () => {
+    const result = await chai.request(app).post('/login').send({
+      email: '',
+      password: '',
+    });
+
+    expect(result.status).to.equal(400);
+    expect(result.body).to.have.key('message');
+  });
 });
