@@ -5,6 +5,7 @@ import Team from '../database/models/Team';
 class MatchesModel {
   protected _model = Matches;
 
+  // GET/matches:
   public async findAll(): Promise<IMatches[] | null> {
     const result = await this._model.findAll({
       include: [
@@ -20,6 +21,28 @@ class MatchesModel {
       ],
     });
 
+    return result;
+  }
+
+  // POST/matches:
+  public async create(matches: IMatches): Promise<IMatches> {
+    const result = await this._model.create({
+      homeTeam: matches.homeTeam,
+      homeTeamGoals: matches.homeTeamGoals,
+      awayTeam: matches.awayTeam,
+      awayTeamGoals: matches.awayTeamGoals,
+      inProgress: true,
+    });
+
+    return result;
+  }
+
+  // PATCH/matches:
+  public async update(id: number) {
+    const result = await this._model.update(
+      { inProgress: false },
+      { where: { id } },
+    );
     return result;
   }
 }
