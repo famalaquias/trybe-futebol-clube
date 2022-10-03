@@ -4,7 +4,7 @@ import LoginController from './controllers/LoginControllers';
 import loginValidation from './middlewares/loginValidation';
 import TeamController from './controllers/TeamControllers';
 import MatchesController from './controllers/MatchesControllers';
-// import { verifyJwt } from './middlewares/jwt';
+import { tokenValidation } from './middlewares/jwt';
 
 const loginControllers = new LoginController();
 const teamControllers = new TeamController();
@@ -32,7 +32,7 @@ class App {
 
     // Rotas /matches:
     this.app.get('/matches', matchesControllers.findAll);
-    this.app.post('/matches', matchesControllers.create);
+    this.app.post('/matches', tokenValidation, matchesControllers.create);
     this.app.patch('/matches/:id/finish', matchesControllers.update);
   }
 
