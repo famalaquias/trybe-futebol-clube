@@ -37,7 +37,7 @@ class MatchesModel {
     return result;
   }
 
-  // PATCH/matches:
+  // PATCH/matches/:id/finish:
   public async update(id: number) {
     const result = await this._model.update(
       { inProgress: false },

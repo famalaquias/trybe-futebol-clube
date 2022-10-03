@@ -1,11 +1,11 @@
 import IMatches from '../interfaces/IMatches';
-// import TeamModel from '../models/TeamModels';
+import TeamModel from '../models/TeamModels';
 import MatchesModel from '../models/MatchesModels';
 
 export default class MatchesService {
   constructor(
     private model: MatchesModel = new MatchesModel(),
-    // private teamModel: TeamModel = new TeamModel(),
+    private teamModel: TeamModel = new TeamModel(),
   ) {}
 
   // GET/matches:
@@ -21,16 +21,25 @@ export default class MatchesService {
 
   // POST/matches:
   public async create(matches: IMatches) {
-    const match = await this.model.create(matches);
+    // const { homeTeam, awayTeam } = matches;
+    const homeTeam = await this.teamModel.findOne(matches.homeTeam);
+    const awayTeam = await this.teamModel.findOne(matches.awayTeam);
 
-    if (!match) {
-      return { code: 404, message: 'Unable to save a match with inProgress status' };
+    // não é possível inserir uma partida com times iguais.
+    if (matches.homeTeam === matches.awayTeam) {
+      return { code: 401, message: 'It is not possible to create a match with two equal teams' };
     }
 
+    // não é possível inserir uma partida com times que não existe na tabela.
+    if (!homeTeam || !awayTeam) {
+      return { code: 404, message: 'There is no team with such id!' };
+    }
+
+    const match = await this.model.create(matches);
     return { code: 201, data: match };
   }
 
-  // PATCH/matches:
+  // PATCH/matches/:id/finish:
   public async update(id: number) {
     const matchUpdate = await this.model.update(id);
 

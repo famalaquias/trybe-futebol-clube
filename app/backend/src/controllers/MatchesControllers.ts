@@ -5,9 +5,10 @@ class MatchesController {
   constructor(private service: MatchesService = new MatchesService()) {
     this.findAll = this.findAll.bind(this);
     this.create = this.create.bind(this);
+    this.update = this.update.bind(this);
   }
 
-  // GET/matche:
+  // GET/matches:
   public async findAll(
     req: Request,
     res: Response,
@@ -33,7 +34,7 @@ class MatchesController {
     return res.status(match.code).json(match.data);
   }
 
-  // PATCH/matches:
+  // PATCH/matches/:id/finish
   public async update(
     req: Request,
     res: Response,
@@ -44,7 +45,7 @@ class MatchesController {
     if (matchUpdate.message) {
       return res.status(matchUpdate.code).json({ message: matchUpdate.message });
     }
-    return res.status(matchUpdate.code).json(matchUpdate.data);
+    return res.status(matchUpdate.code).json({ message: matchUpdate.data });
   }
 }
 
