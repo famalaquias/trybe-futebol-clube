@@ -3,9 +3,11 @@ import middlewareError from './middlewares/middlewareError';
 import LoginController from './controllers/LoginControllers';
 import loginValidation from './middlewares/loginValidation';
 import TeamController from './controllers/TeamControllers';
+import MatchesController from './controllers/MatchesControllers';
 
 const loginControllers = new LoginController();
 const teamControllers = new TeamController();
+const matchesControllers = new MatchesController();
 
 class App {
   public app: express.Express;
@@ -26,6 +28,9 @@ class App {
     // Rotas /teams:
     this.app.get('/teams', teamControllers.findAll);
     this.app.get('/teams/:id', teamControllers.findOne);
+
+    // Rotas /matches:
+    this.app.get('/matches', matchesControllers.findAll);
   }
 
   private config():void {
