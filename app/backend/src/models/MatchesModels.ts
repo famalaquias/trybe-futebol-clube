@@ -45,6 +45,15 @@ class MatchesModel {
     );
     return result;
   }
+
+  // PATCH/matches/:id:
+  public async updateGoals(id: number, homeTeamGoals: number, awayTeamGoals: number) {
+    const result = await this._model.update(
+      { homeTeamGoals, awayTeamGoals },
+      { where: { id } },
+    );
+    return result;
+  }
 }
 
 export default MatchesModel;

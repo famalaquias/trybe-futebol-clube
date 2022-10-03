@@ -6,6 +6,7 @@ class MatchesController {
     this.findAll = this.findAll.bind(this);
     this.create = this.create.bind(this);
     this.update = this.update.bind(this);
+    this.updateGoals = this.updateGoals.bind(this);
   }
 
   // GET/matches:
@@ -41,11 +42,29 @@ class MatchesController {
     _next: NextFunction,
   ) {
     const { id } = req.params;
+
     const matchUpdate = await this.service.update(Number(id));
     if (matchUpdate.message) {
       return res.status(matchUpdate.code).json({ message: matchUpdate.message });
     }
     return res.status(matchUpdate.code).json({ message: matchUpdate.data });
+  }
+
+  // PATCH/matches/:id:
+  public async updateGoals(
+    req: Request,
+    res: Response,
+    _next: NextFunction,
+  ) {
+    const { id } = req.params;
+    const { homeTeamGoals, awayTeamGoals } = req.body;
+
+    const matchGoals = await this.service.updateGoals(Number(id), homeTeamGoals, awayTeamGoals);
+
+    if (matchGoals.message) {
+      return res.status(matchGoals.code).json({ message: matchGoals.message });
+    }
+    return res.status(matchGoals.code).json(matchGoals.data);
   }
 }
 

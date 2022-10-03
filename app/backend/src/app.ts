@@ -33,6 +33,7 @@ class App {
     // Rotas /matches:
     this.app.get('/matches', matchesControllers.findAll);
     this.app.post('/matches', tokenValidation, matchesControllers.create);
+    this.app.patch('/matches/:id', matchesControllers.updateGoals);
     this.app.patch('/matches/:id/finish', matchesControllers.update);
   }
 
