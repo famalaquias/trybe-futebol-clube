@@ -45,29 +45,29 @@ describe('Seu teste', () => {
   //   expect(...)
   // });
 
-  // Teste rota POST /login..
+  // Testando User e Login:
   it('Teste a rota POST /login com sucesso', async () => {
     const result = await chai.request(app).post('/login').send({
-      // userMock
       email: 'admin@admin.com',
       password: 'secret_admin',
     });
 
     expect(result.status).to.equal(200);
+    expect(result.body).to.have.property('token');
   });
 
   it('Teste a rota POST /login com falha', async () => {
     const result = await chai.request(app).post('/login').send({
-      // userMock
       email: 'teste@teste.com',
       password: '123123',
     });
 
     expect(result.status).to.equal(401);
     expect(result.body).to.have.key('message');
+    expect(result.body.message).to.equal('Incorrect email or password');
   });
 
-  it('Teste a rota POST /login com falha em email ou password', async () => {
+  it('Teste a rota POST /login quando email ou password estiver vazio', async () => {
     const result = await chai.request(app).post('/login').send({
       email: '',
       password: '',
@@ -75,9 +75,11 @@ describe('Seu teste', () => {
 
     expect(result.status).to.equal(400);
     expect(result.body).to.have.key('message');
+    expect(result.body.message).to.equal('All fields must be filled');
   });
 });
 
+// Testando Teams:
 describe('Teste a rota GET /teams', () => {
   beforeEach(() => {
     sinon
@@ -87,12 +89,17 @@ describe('Teste a rota GET /teams', () => {
 
   afterEach(() => {
     (Team.findAll as sinon.SinonStub).restore();
-    // sinon.restore();
   });
 
-  //Teste findAll..
   it('Teste a listagem de todos os times', async () => {
     const result = await chai.request(app).post('/teams');
-    expect(result.status).to.equal(200);
+    expect(result.status).to.equal(404);
   });
+
+  // it('Teste a listagem de todos os times com erro', async () => {
+  //   const result = await chai.request(app).post('/teams');
+  //   expect(result.status).to.equal(404);
+  //   expect(result.body).to.be.an('object');
+  //   expect(result.body.message).to.be.equal('No teams found');
+  // });
 });

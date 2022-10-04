@@ -4,11 +4,13 @@ import LoginController from './controllers/LoginControllers';
 import loginValidation from './middlewares/loginValidation';
 import TeamController from './controllers/TeamControllers';
 import MatchesController from './controllers/MatchesControllers';
+import LeaderboardController from './controllers/LeaderboardControllers';
 import { tokenValidation } from './middlewares/jwt';
 
 const loginControllers = new LoginController();
 const teamControllers = new TeamController();
 const matchesControllers = new MatchesController();
+const leaderboardControllers = new LeaderboardController();
 
 class App {
   public app: express.Express;
@@ -35,6 +37,9 @@ class App {
     this.app.post('/matches', tokenValidation, matchesControllers.create);
     this.app.patch('/matches/:id', matchesControllers.updateGoals);
     this.app.patch('/matches/:id/finish', matchesControllers.update);
+
+    // Rotas /leaderboard:
+    this.app.get('/leaderboard/home', leaderboardControllers.findAll);
   }
 
   private config():void {
