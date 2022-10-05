@@ -38,14 +38,22 @@ export default class LeaderboardService {
 
   // GET/leaderboard:
   // public async findAll() {
-  //   const { data: dataHome } = await this.findAllHome();
-  //   const { data: dataAway } = await this.findAllAway();
+  //   const dataHome = await this.findAllHome() as unknown as ILeaderboardHomeAway[];
+  //   const dataAway = await this.findAllAway() as unknown as ILeaderboardAway[];
 
   //   if (!dataHome || !dataAway) {
   //     return { code: 404, message: 'No data found' };
   //   }
 
-  //   const result = boardAway(leaderAway);
+  //   const resultAway = boardAway(dataAway);
+  //   const resultHome = boardHome(dataHome);
+
+  //   const result = resultAway.map((away) => (resultHome.map((home) => {
+  //     const { name } = away;
+  //     const efficiency = away.efficiency + home.efficiency;
+  //     return { name, efficiency };
+  //   })));
+
   //   const sortLeader = sortLeaderboardAway(result);
 
   //   return { code: 200, data: sortLeader };

@@ -30,6 +30,21 @@ export interface ILeaderboard { // IBoard
   goalsOwn: number,
   goalsBalance: number,
   efficiency: string,
-  teamHome?: ILeaderboardHome[],
-  teamAway?: ILeaderboardHome[],
+}
+
+export interface ILeader {
+  id: number,
+  teamName: string,
+  teamAway: ILeaderboardHome[],
+  teamHome: ILeaderboardHome[],
+  name:string,
+  totalPoints: number,
+  totalGames: number,
+  totalVictories: number,
+  totalDraws: number,
+  totalLosses: number,
+  goalsFavor: number,
+  goalsOwn: number,
+  goalsBalance: number,
+  efficiency: string,
 }

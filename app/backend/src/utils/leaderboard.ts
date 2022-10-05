@@ -1,4 +1,4 @@
-// import { ILeaderboard } from '../interfaces/ILeaderboard';
+// import { ILeaderboard, ILeader, ILeaderboardHomeAway, ILeaderboardAway } from '../interfaces/ILeaderboard';
 
 // const leader = (teamHome: ILeaderboard, teamAway: ILeaderboard) => {
 //   const goalsFavor = teamHome.goalsFavor + teamAway.goalsFavor;
@@ -25,22 +25,24 @@
 //   return efficiency;
 // };
 
-// const board = (dataHome: ILeaderboard[], dataAway: ILeaderboard[]) => {
-//   dataHome.map((datHome: any) => {
-//     const data = dataAway.find((dat:ILeaderboard) => dat.name === datHome.name);
-//     const { goalsFavor, goalsOwn, goalsBalance } = leader(datHome, data);
-//     const efficiency = totalEfficiency(datHome, datAway);
-// });
-//    return { name,
-// totalPoints,
-// totalGames,
-// totalVictories,
-// totalDraws,
-// totalLosses,
-// ...goalsBalance,
-// efficiency: efficiency.toFixed(2),
-// };
-// };
+// const board = (teamHome: ILeaderboardHomeAway[], teamAway: ILeaderboardAway[]) => {
+//   const newHome = teamHomeAway.map((t) => {
+//     const name = t.teamName;
+//     const { totalVictories, totalLosses, totalDraws, totalPoints } = calculateMatch(t.teamHome, t.teamAway);
+//     const totalGames = t.teamHome.length + t.teamAway.length;
+//     const goalsBalance = leader(t.teamHome, t.teamAway);
+//     const efficiency = totalEfficiency(t.totalPoints, t.totalGames);
+
+//     return { name,
+//       totalPoints,
+//       totalGames,
+//       totalVictories,
+//       totalDraws,
+//       totalLosses,
+//       ...goalsBalance,
+//       efficiency: efficiency.toFixed(2),
+//     };
+//   });
 
 // const sortLeaderboard = (leaderboard: ILeaderboard[]) => {
 //   const sortedLeaderboard = leaderboard.sort((a: ILeaderboard, b: ILeaderboard) => {
