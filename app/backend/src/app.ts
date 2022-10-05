@@ -39,7 +39,9 @@ class App {
     this.app.patch('/matches/:id/finish', matchesControllers.update);
 
     // Rotas /leaderboard:
-    this.app.get('/leaderboard/home', leaderboardControllers.findAll);
+    this.app.get('/leaderboard/home', leaderboardControllers.findAllHome);
+    this.app.get('/leaderboard/away', leaderboardControllers.findAllAway);
+    // this.app.get('/leaderboard', leaderboardControllers.findAll);
   }
 
   private config():void {

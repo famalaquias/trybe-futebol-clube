@@ -1,4 +1,4 @@
-export interface ILeaderboardHome {
+export interface ILeaderboardHome { // ITeamMatch
   id: number,
   homeTeam: number,
   homeTeamGoals: number,
@@ -7,13 +7,19 @@ export interface ILeaderboardHome {
   inProgress: boolean,
 }
 
-export interface ILeaderboardHomeAway {
+export interface ILeaderboardHomeAway { // ITeamHome
   id: number,
   teamName: string,
   teamHome: ILeaderboardHome[],
 }
 
-export interface ILeaderboard {
+export interface ILeaderboardAway { // ITeamAway
+  id: number,
+  teamName: string,
+  teamAway: ILeaderboardHome[],
+}
+
+export interface ILeaderboard { // IBoard
   name:string,
   totalPoints: number,
   totalGames: number,
@@ -24,4 +30,6 @@ export interface ILeaderboard {
   goalsOwn: number,
   goalsBalance: number,
   efficiency: string,
+  teamHome?: ILeaderboardHome[],
+  teamAway?: ILeaderboardHome[],
 }

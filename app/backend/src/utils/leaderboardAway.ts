@@ -1,11 +1,11 @@
-import { ILeaderboardHomeAway, ILeaderboardHome, ILeaderboard } from '../interfaces/ILeaderboard';
+import { ILeaderboardAway, ILeaderboardHome, ILeaderboard } from '../interfaces/ILeaderboard';
 
 const leader = (match: ILeaderboardHome[]) => {
   const goalsFavor = match.reduce((acc: number, mat: ILeaderboardHome) =>
-    acc + mat.homeTeamGoals, 0);
+    acc + mat.awayTeamGoals, 0);
 
   const goalsOwn = match.reduce((acc: number, mat: ILeaderboardHome) =>
-    acc + mat.awayTeamGoals, 0);
+    acc + mat.homeTeamGoals, 0);
 
   const goalsBalance = goalsFavor - goalsOwn;
 
@@ -18,9 +18,9 @@ const calculateMatch = (matches: ILeaderboardHome[]) => {
   let totalDraws = 0;
   let totalPoints = 0;
   matches.forEach((match: ILeaderboardHome) => {
-    if (match.homeTeamGoals > match.awayTeamGoals) {
+    if (match.awayTeamGoals > match.homeTeamGoals) {
       totalVictories += 1; totalPoints += 3;
-    } else if (match.homeTeamGoals < match.awayTeamGoals) {
+    } else if (match.homeTeamGoals > match.awayTeamGoals) {
       totalLosses += 1;
     } else {
       totalDraws += 1; totalPoints += 1;
@@ -34,12 +34,13 @@ const totalEfficiency = (P:number, J: number) => {
   return efficiency;
 };
 
-const boardHome = (home: ILeaderboardHomeAway[]) => {
+const boardAway = (home: ILeaderboardAway[]) => {
   const newHome = home.map((t) => {
     const name = t.teamName;
-    const { totalVictories, totalLosses, totalDraws, totalPoints } = calculateMatch(t.teamHome);
-    const totalGames = t.teamHome.length;
-    const goalsBalance = leader(t.teamHome);
+    const { totalVictories, totalLosses, totalDraws, totalPoints } = calculateMatch(t.teamAway);
+
+    const totalGames = t.teamAway.length;
+    const goalsBalance = leader(t.teamAway);
     const efficiency = totalEfficiency(totalPoints, totalGames);
 
     return { name,
@@ -56,7 +57,7 @@ const boardHome = (home: ILeaderboardHomeAway[]) => {
   return newHome;
 };
 
-const sortLeaderboardHome = (leaderboard: ILeaderboard[]) => {
+const sortLeaderboardAway = (leaderboard: ILeaderboard[]) => {
   const sortedLeaderboard = leaderboard.sort((a: ILeaderboard, b: ILeaderboard) => {
     if (a.totalPoints < b.totalPoints) return 1;
     if (a.totalPoints > b.totalPoints) return -1;
@@ -73,4 +74,4 @@ const sortLeaderboardHome = (leaderboard: ILeaderboard[]) => {
   return sortedLeaderboard;
 };
 
-export { boardHome, sortLeaderboardHome };
+export { boardAway, sortLeaderboardAway };
