@@ -18,10 +18,16 @@ Nesse projeto foi desenvolvido uma API onde é possível obeter dados sobre os u
 
 ## :hammer_and_wrench: Ferramentas Utilizadas
 
+* Docker
 * Node.js
 * Express.js
+* MySQL
+* React
 * TypeScript
-* Programação Orientada a Objetos (POO)
+* Programação Orientada a Objetos (OOP)
 * SOLID
+* Sequelize
+* Chai
+*Sinon
 
-
+:detective
