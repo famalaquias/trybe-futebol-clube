@@ -33,7 +33,7 @@ Nesse projeto foi desenvolvido uma API onde é possível obeter dados sobre os u
 ## :female_detective: Instruções de Instalação e Execução
 Para rodar a aplicação é necessário ter o Git, o Docker, o Node e o Docker Compose instalados na sua máquina. O Docker Compose precisa estar na versão 1.29.2 ou superior e o Node na versão 16.14.0.
 
-# 1 - Clone o repositório e entre na pasta do projeto:
+### 1 - Clone o repositório e entre na pasta do projeto:
 
 ```sh
 git clone git@github.com:famalaquias/trybe-futebol-clube.git
@@ -43,5 +43,18 @@ git clone git@github.com:famalaquias/trybe-futebol-clube.git
 cd trybe-futebol-clube
 ```
 
+### 2 - Execute o Docker container:
 
+```sh
+npm run compose:up
+```
 
+### 3 - Acesse a aplicação:
+A aplicação do Back-End está na porta 3001, a aplicação do Front-End está na porta 3000 e o banco de dados MySQL na porta 3002.
+
+### 4 - Cobertura de Testes de Integração:
+Para rodar os testes de integração execute o comando abaixo no terminal do projeto.
+
+```sh
+cd ./app/backend && npm run test:coverage
+```
