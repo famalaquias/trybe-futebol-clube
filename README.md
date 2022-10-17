@@ -74,6 +74,62 @@ Na requisição ` POST`, é necessário informar o seguinte JSON:
 ```
 
 
+#### Times
+| Método | Funcionalidade | URL |
+|---|---|---|
+| `GET` | Retorna todos os times do campeonato que foram cadastrados | http://localhost:3001/teams |
+| `GET` | Retorna um time específico com base em seu ID | http://localhost:3001/teams/:id |
+
+
+#### Partidas
+| Método | Funcionalidade | URL |
+|---|---|---|
+| `GET` | Retorna todas as partidas do campeonato cadastradas | http://localhost:3001/matches |
+| `POST` | Criação de uma nova partida | http://localhost:3001/matches |
+| `PATCH` | Atualiza uma partida em andamento baseada em seu ID | http://localhost:3001/matches/:id |
+| `PATCH` | Finaliza uma partida em andamento baseada em seu ID | http://localhost:3001/matches/:id/finish |
+
+Na requisição `GET` é possível filtrar as partidas em andamento e partidas finalizadas da seguinte maneira:
+
+```
+http://localhost:3001/matches?inProgress=true
+http://localhost:3001/matches?inProgress=false
+```
+###
+
+Na requisção `POST` é necessaŕio informar um JSON no seguinte formato:
+
+```
+{
+  "homeTeam": 16, // O valor deve ser o ID do time
+  "awayTeam": 8, // O valor deve ser o ID do time
+  "homeTeamGoals": 2,
+  "awayTeamGoals": 2,
+  "inProgress": true
+}
+```
+
+###
+
+Na requisição `PATCH` é necessário informar um JSON no seguinte formato:
+
+```
+{
+  "homeTeamGoals": 3,
+  "awayTeamGoals": 1
+}
+```
+
+
+#### Placar/Classificação
+| Método | Funcionalidade | URL |
+|---|---|---|
+| `GET` | Retorna a classificação geral com base nas partidas jogadas | http://localhost:3001/leaderboard |
+| `GET` | Retorna a classificação dos times mandantes | http://localhost:3001/leaderboard/home |
+| `GET` | Retorna a classificação dos times visitantes | http://localhost:3001/leaderboard/away |
+
+
+
 
 
 
