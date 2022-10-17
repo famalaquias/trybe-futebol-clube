@@ -5,7 +5,7 @@
 ## :page_with_curl: Sobre
 
 O projeto TFC - Trybe Futebol Clube é um informativo sobre classificação e partidas de futebol. 
-Nesse projeto foi desenvolvido uma API onde é possível obeter dados sobre os usuários, os times, as partidas e os placares. Foi construído um back-end dockerizado utilizando modelagem de dados através do Sequelize. Seu desenvolvimento deve respeitar regras de negócio de um front-end já estruturado.
+Nesse projeto foi desenvolvido uma API onde é possível obter dados sobre os usuários, os times, as partidas e os placares. Foi construído um back-end dockerizado utilizando modelagem de dados através do Sequelize. Seu desenvolvimento deve respeitar regras de negócio de um front-end já estruturado.
 
 ## :man_technologist: Habilidades Desenvolvidas
 
