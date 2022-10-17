@@ -57,6 +57,8 @@ cd ./app/backend && npm run test:coverage
 
 ## :gear: Endpoints
 
+![classificação](https://user-images.githubusercontent.com/98343640/196237359-1126f295-4d09-4c5f-9dc5-7c8c1bb498c2.png)
+
 #### Login
 
 | Método | Funcionalidade | URL |
