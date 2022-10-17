@@ -36,11 +36,7 @@ Para rodar a aplicação é necessário ter o Git, o Docker, o Node e o Docker C
 ### 1 - Clone o repositório e entre na pasta do projeto:
 
 ```sh
-git clone git@github.com:famalaquias/trybe-futebol-clube.git
-```
-
-```sh
-cd trybe-futebol-clube
+git clone git@github.com:famalaquias/trybe-futebol-clube.git && cd trybe-futebol-clube
 ```
 
 ### 2 - Execute o Docker container:
@@ -58,3 +54,26 @@ Para rodar os testes de integração execute o comando abaixo no terminal do pro
 ```sh
 cd ./app/backend && npm run test:coverage
 ```
+
+## :gear: Endpoints
+
+#### Login
+
+| Método | Funcionalidade | URL |
+|---|---|---|
+| `POST` | Realiza login do usuário e retorna um token para autenticação | http://localhost:3001/login |
+| `GET` | Avalia se o usuário é o administrador e recebe um header com parâmetro authorization | http://localhost:3001/login/validate |
+
+Na requisição ` POST`, é necessário informar o seguinte JSON:
+
+```
+{
+  "email": "admin@admin.com",
+  "password": "secret_admin"
+}
+```
+
+
+
+
+
