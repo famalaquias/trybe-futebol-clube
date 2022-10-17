@@ -28,7 +28,8 @@ Nesse projeto foi desenvolvido uma API onde é possível obter dados sobre os us
 * SOLID
 * Sequelize
 * Chai
-*Sinon
+* Sinon
+
 
 ## :female_detective: Instruções de Instalação e Execução
 Para rodar a aplicação é necessário ter o Git, o Docker, o Node e o Docker Compose instalados na sua máquina. O Docker Compose precisa estar na versão 1.29.2 ou superior e o Node na versão 16.14.0.
