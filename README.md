@@ -11,7 +11,7 @@ Nesse projeto foi desenvolvido uma API onde é possível obter dados sobre os us
 
 * Construído com Node.js, Express, MySQL, Docker, TypeScript e Sequelize
 * Utilizando a Linguagem de Programação Orientada a Objetos - POO e os Princípios SOLID
-* Teste de integração com Mocha, Chai e Sinon
+* Testes de Integração com Mocha, Chai e Sinon
 * Aplicação da Arquitetura de Software - Camada MSC - Modelo, Serviço e de Controladores
 * Criando uma API RESTful
 
