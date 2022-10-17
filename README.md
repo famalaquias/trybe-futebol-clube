@@ -30,4 +30,18 @@ Nesse projeto foi desenvolvido uma API onde é possível obeter dados sobre os u
 * Chai
 *Sinon
 
-:female_detective:
+## :female_detective: Instruções de Instalação e Execução
+Para rodar a aplicação é necessário ter o Git, o Docker, o Node e o Docker Compose instalados na sua máquina. O Docker Compose precisa estar na versão 1.29.2 ou superior e o Node na versão 16.14.0.
+
+# 1 - Clone o repositório e entre na pasta do projeto:
+
+```sh
+git clone git@github.com:famalaquias/trybe-futebol-clube.git
+```
+
+```sh
+cd trybe-futebol-clube
+```
+
+
+
