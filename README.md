@@ -30,4 +30,4 @@ Nesse projeto foi desenvolvido uma API onde é possível obeter dados sobre os u
 * Chai
 *Sinon
 
-:detective
+:female_detective:
